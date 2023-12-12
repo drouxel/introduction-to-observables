@@ -1,27 +1,24 @@
 # IntroductionToObservables
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
+The aim of this little demo project is to help you understand how observables work behind the scenes and understand the core mechanismes behind `.subscribe()` and `.pipe()` along with a few rxjs operators.
 
-## Development server
+If you want to dig deeper into the subject, you may have a look at these resources
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- https://refactoring.guru/design-patterns/observer
+- https://web.archive.org/web/20230209101338/https://indepth.dev/reference/rxjs/operators
+- https://rxjs.dev/guide/operators
 
-## Code scaffolding
+## Step 1
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+In order to position yourself on this state of the app you may use the command `git checkout step_1` in your favorite terminal
 
-## Build
+### Summary
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+In this first step, we create an observable and set it to emit up to 6 times (`.next()`).
+We will have a look at what happens at runtime by:  
 
-## Running unit tests
+- adding breakpoint in the debugger  
+- changing the definition of the observable itself
+- subscribing to it 0 to X times etc
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+When you are ready to go to the next step, you can use the commend `git checkout step_2`
