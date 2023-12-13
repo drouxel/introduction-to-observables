@@ -8,6 +8,10 @@ If you want to dig deeper into the subject, you may have a look at these resourc
 - https://web.archive.org/web/20230209101338/https://indepth.dev/reference/rxjs/operators
 - https://rxjs.dev/guide/operators
 
+## Step 5
+
+Now that everything is working fine we'll dig deeper in the issues of performance that may occur with our subscriptions and also take a look at the strategies that we can put in place to avoid memory leaks
+
 ## Step 4
 
 ### Important information
