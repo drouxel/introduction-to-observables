@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, debounceTime, map, tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -17,58 +17,57 @@ export class AppComponent implements OnInit{
   ////////////////////
 
   /**
-   * In this first step, we create an observable and set it to emit up to 6 times (.next)
-   * we will have a look at what happens at runtime by adding breakpoint in the debugger
+   * In this second step we change the value inside our `observable$` to an object and create another observable 
+   * that will listen to the changes and map the value to only what we need
+   * a bit like observable would be a newspaper and we only wanted to subscribe to the sports pages
    */
 
+  public observable$ = new Observable<{value: number}>((subscriber) => {
+    // you should also try commenting out .next() without timeout to get a glance at toto value
+    subscriber.next({value: 1});
+    subscriber.next({value: 2});
+    subscriber.next({value: 3});
+    setTimeout(() => {
+      subscriber.next({value: 4});
+      subscriber.complete()
+    }, 2000);
+    subscriber.next({value: 5});
+    setTimeout(() => {
+      subscriber.next({value: 6})
+    }, 1000)
+  })
+  // now let's add a pipe(tap()) to see what is happening here
+  .pipe(
+    tap(value => console.warn('value in tap is ', value)),
+    //share()
+  )
+
+  public toto: number = 0
+  public toto$!: Observable<number>;
+
   public ngOnInit(): void {
-    // example taken from https://rxjs.dev/guide/observable
-    const observable$ = new Observable((subscriber) => {
-      // add breakpoint here 👇
-      subscriber.next(1);
-      // add breakpoint here 👇
-      subscriber.next(2);
-      // add breakpoint here 👇
-      subscriber.next(3);
-      setTimeout(() => {
-        // add breakpoint here 👇
-        subscriber.next(4);
-        subscriber.complete()
-        // 👆 comment this after having had a look at the chain of events
-        // 👇 and ununcomment this bit to check the differenc ein the subscribe object 
-        // subscriber.error('it\'s over mate');
-      }, 2000);
-      // add breakpoint here 👇
-      subscriber.next(5);
-      setTimeout(() => {
-        // add breakpoint here 👇
-        subscriber.next(6)
-      }, 1000)
-    });
-    // please take time to play along with the definition of the Observable, removing the .next() 
-    // that do not have a timeout or reverse the values in the timeouts to 
-    // you may also remove the breakpoints to see in which order the console.logs get called
-
-    // add breakpoint here 👇
-    console.warn('just before subscribe')
-
-    // please try without the subscribe 1st, just to see what happens
-    // add breakpoint here 👇
-    observable$.subscribe({
+    this.observable$.subscribe({
       next(x) {
-        // add breakpoint here 👇
         console.log('got value ', x);
       },
       error(err) {
-        // add breakpoint here 👇
         console.error('something wrong occurred: ' + err);
       },
       complete() {
-        // add breakpoint here 👇
         console.log('done');
       },
-    })
+    });
 
-    console.warn('just after subscribe')
+    console.log('toto just after subscribe', this.toto);
+
+
+    this.toto$ = this.observable$.pipe(
+      map( x => x.value),
+      debounceTime(300)
+    );
+    this.toto$.subscribe((value) => console.error('value inside toto$ is', value))
+
+    // remember to experiment multiplying subscriptions on _observable$
+
   }
 }
