@@ -1,0 +1,34 @@
+<form [formGroup]="userForm">
+    <mat-form-field >
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Ex. Toto" formControlName="name">
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label>Surname</mat-label>
+        <input matInput placeholder="Ex. Tata" formControlName="surname">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Birthdate</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthdate">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+</form>
+
+<div class="buttons">
+    <button 
+        mat-raised-button 
+        color="warn"
+        (click)="clearUser()"
+    >
+        Clear User
+    </button>
+    <button 
+        mat-raised-button 
+        color="primary" 
+        [disabled]="!userForm.valid"
+        (click)="updateUser()"
+    >
+        Submit User
+    </button>
+</div>

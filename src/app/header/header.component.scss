@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    background-color: #d0cccc;
+    border-radius: 1em;
+    padding: .5em 1.5em;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}

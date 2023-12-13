@@ -1,0 +1,17 @@
+
+@if (currentUser$ | async) {
+    <ng-container
+        [ngTemplateOutlet]="userInfo"
+        [ngTemplateOutletContext]="{user: currentUser$ | async}"
+    ></ng-container>
+}@else {
+    <h3>There is no user in the userStore</h3>
+}
+
+<ng-template #userInfo let-user="user">
+    <div class="user-info">
+        <h3>Name: {{user.name}}</h3>
+        <h3>Surname: {{user.surname}}</h3>
+        <h3>Birthdate: {{user.birthdate | date}} </h3>
+    </div>
+</ng-template>

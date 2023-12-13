@@ -8,6 +8,22 @@ If you want to dig deeper into the subject, you may have a look at these resourc
 - https://web.archive.org/web/20230209101338/https://indepth.dev/reference/rxjs/operators
 - https://rxjs.dev/guide/operators
 
+## Step 3
+
+Now that we hav got used to the basic principles of observables, subscribes and pipes, we are going to have a look at what happens in real life and at what could be an implementation of an observable in an application
+
+In this step, we will create a mediator file and a few components to make them interact with each other:
+
+> create a `user.store.ts` file and add it to the app.config.ts providers
+
+> create a user-form.component that will help us update the current user in the app.
+
+> create a header.component that will simply display the user information
+
+go to the newly created components and follow the instructions
+
+When you are ready to go to the next step, you can use the commend `git checkout step_4`
+
 ## Step 2
 
 In this step, we change our primitive observable value to an object and listen to it to transform that object into a primitive value.

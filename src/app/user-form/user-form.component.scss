@@ -1,0 +1,27 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.5em;
+    border-radius: 1em;
+    background-color: aliceblue;
+    max-width: 400px;
+}
+form {
+    width: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+.mat-mdc-raised-button[disabled] {
+    color: black !important;
+}
+  
