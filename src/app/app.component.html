@@ -1,2 +1,15 @@
 <app-header></app-header>
-<app-user-form></app-user-form>
+<div class="main-container">
+    <app-user-form></app-user-form>
+    @if (displayChuckNorris) {
+        <app-chuck-norris-fact></app-chuck-norris-fact>
+    }
+</div>
+<footer>
+    <button 
+        mat-raised-button 
+        (click)="toggleChuckNorris()"
+    >
+        {{displayChuckNorris ? 'Hide Chuck Norris' : 'Display Chuck Norris'}}
+    </button>
+</footer>

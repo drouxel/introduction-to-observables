@@ -28,21 +28,11 @@ export class UserFormComponent {
 
   public userForm: FormGroup;
 
-  /**
-   * Instructions. 
-   * Once you have had a look at what happens in the header and done the changes 
-   * you can start using this. 
-   * 1st thing is to fill in the user form and click on Submit User. have a look at the header!
-   * 2nd => click on Clear User and see what happens
-   * 3rd => solve the bug
-   */
-
-
   constructor(private _formBuilder: FormBuilder, private _userStore: UserStore) {
     this.userForm = this._formBuilder.group({
-      name: [null, Validators.required],
-      surname:  [null, Validators.required],
-      birthdate: []
+      name: ['Rouxel', Validators.required],
+      surname:  ['Damien', Validators.required],
+      birthdate: [new Date('08/08/1987')]
     })
   }
 

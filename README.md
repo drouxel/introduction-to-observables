@@ -8,6 +8,23 @@ If you want to dig deeper into the subject, you may have a look at these resourc
 - https://web.archive.org/web/20230209101338/https://indepth.dev/reference/rxjs/operators
 - https://rxjs.dev/guide/operators
 
+## Step 4
+
+### Important information
+
+In Order to be able to use the new component without having CORS issues, you will have to run the following command
+
+- On a windows environment (in the folder where your chrome.exe file is => often `/c/Program Files/Google/Chrome/Application`)
+`./chrome.exe --user-data-dir="C://chrome-dev-disabled-security" --disable-web-security --disable-site-isolation-trials`
+
+if you are using another OS or Browser, you will need to find out how to disable CORS preflights in there or find another API to play with that does enable CORS
+
+### Summary
+
+Now that we have got the basics, we will have a look at how we can combined stored informations like the user with an api call to be able to mix observables for real life purposes ... or not!
+
+In this step, we are creating a chuck norris fact component that will call an Api that returns chuck norris jokes (in french for this demo) and replace chuck norris inside them with our user's name and surname
+
 ## Step 3
 
 Now that we hav got used to the basic principles of observables, subscribes and pipes, we are going to have a look at what happens in real life and at what could be an implementation of an observable in an application

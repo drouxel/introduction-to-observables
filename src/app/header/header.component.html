@@ -1,8 +1,8 @@
 
-@if (currentUser$ | async) {
+@if (user$ | async) {
     <ng-container
         [ngTemplateOutlet]="userInfo"
-        [ngTemplateOutletContext]="{user: currentUser$ | async}"
+        [ngTemplateOutletContext]="{user: user$ | async}"
     ></ng-container>
 }@else {
     <h3>There is no user in the userStore</h3>
